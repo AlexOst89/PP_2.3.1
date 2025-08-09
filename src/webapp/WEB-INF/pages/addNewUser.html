@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+</head>
+<body>
+
+<h2>User</h2>
+
+<!-- Отправляем данные методом POST на адрес saveEmployee -->
+<form action="/PP_2_3_1_war_exploded/saveUser" method="POST">
+
+  <input type="hidden" name="id" th:value="${user.id}" />
+
+  FirstName:<br>
+  <input type="text" name="firstName" th:value="${user.firstName}" /><br><br>
+
+  LastName:<br>
+  <input type="text" name="lastName" th:value="${user.lastName}" /><br><br>
+
+  Email:<br>
+  <input type="text" name="email" th:value="${user.email}" /><br><br>
+
+  <input type="submit" value="OK">
+</form>
+
+</body>
+</html>

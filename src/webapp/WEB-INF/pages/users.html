@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+</head>
+<body>
+<h1>Users list:</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Перебираем автомобили из модели -->
+    <tr th:each="user : ${users}">
+
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <button th:onclick="|window.location.href='@{getUser(id=${user.id})}'|">Update</button>
+            <button th:onclick="|window.location.href='@{getUserD(id=${user.id})}'|">Delete</button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<input type="button" value="AddUser"
+    onclick="window.location.href = 'addNewUser'"/>
+
+</body>
+</html>
+

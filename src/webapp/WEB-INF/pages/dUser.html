@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <style>
+    input[type="text"] {
+      border: none; /* Удаляем границы */
+      background: none; /* Убираем фоновый цвет */
+      outline: none; /* Убираем обводку при фокусе */
+    }
+    input[type="text"][readonly] {
+      color: #333; /* Цвет текста для чтения */
+    }
+  </style>
+</head>
+<body>
+
+<h2>User</h2>
+
+<!-- Отправляем данные методом POST на адрес deleteUser -->
+<form action="/PP_2_3_1_war_exploded/deleteUser" method="post">
+
+  <input type="hidden" name="id" th:value="${user.id}" />
+
+  FirstName:<br>
+  <input type="text" name="firstName" th:value="${user.firstName}" readonly /><br><br>
+
+  LastName:<br>
+  <input type="text" name="lastName" th:value="${user.lastName}" readonly /><br><br>
+
+  Email:<br>
+  <input type="text" name="email" th:value="${user.email}" readonly /><br><br>
+
+  <input type="submit" value="Delete">
+</form>
+
+</body>
+</html>
