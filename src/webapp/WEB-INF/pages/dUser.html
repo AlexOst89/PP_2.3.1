@@ -10,7 +10,7 @@
       outline: none; /* Убираем обводку при фокусе */
     }
     input[type="text"][readonly] {
-      color: #333; /* Цвет текста для чтения */
+      color: #333;
     }
   </style>
 </head>
@@ -18,7 +18,7 @@
 
 <h2>User</h2>
 
-<!-- Отправляем данные методом POST на адрес deleteUser -->
+
 <form action="/PP_2_3_1_war_exploded/deleteUser" method="post">
 
   <input type="hidden" name="id" th:value="${user.id}" />

@@ -24,7 +24,7 @@ public class UserController {
     @GetMapping
     public String getAllUsersFromDao(Model model) {
         List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("users", allUsers); // Важно вернуть правильное имя атрибута!
+        model.addAttribute("users", allUsers);
         return "users";
     }
 
@@ -58,6 +58,6 @@ public class UserController {
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam("id") int id) {
         userService.deleteUser(id);
-        return "redirect:/"; // перенаправление после успешного удаления
+        return "redirect:/";
     }
 }
