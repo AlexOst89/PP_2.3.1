@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/")
 public class UserController {
@@ -23,15 +21,13 @@ public class UserController {
 
     @GetMapping
     public String getAllUsersFromDao(Model model) {
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("users", allUsers);
+        model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
 
     @GetMapping("/addNewUser")
     public String addUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "addNewUser";
     }
 
@@ -42,17 +38,15 @@ public class UserController {
     }
 
     @GetMapping("/getUser")
-    public String getUser(@RequestParam("id") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
+    public String edit(@RequestParam(value = "id") int id, Model model) {
+        model.addAttribute("user", userService.getUser(id));
         return "addNewUser";
     }
 
-    @GetMapping("/getUserD")
-    public String getUser2(@RequestParam("id") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return "dUser";
+    @PostMapping(value = "/update")
+    public String update(@ModelAttribute("user") User user, @RequestParam("id") int id) {
+        userService.updateUser(id, user);
+        return "redirect:/";
     }
 
     @PostMapping("/deleteUser")

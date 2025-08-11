@@ -32,6 +32,16 @@ public class UserDaoImp implements UserDao {
 
    @Transactional
    @Override
+   public void updateUser(int id, User user) {
+      User updateUser = entityManager.find(User.class, id);
+      updateUser.setFirstName(user.getFirstName());
+      updateUser.setLastName(user.getLastName());
+      updateUser.setEmail(user.getEmail());
+      entityManager.merge(updateUser);
+   }
+
+   @Transactional
+   @Override
    public void deleteUser(int id) {
       User deleteUser = entityManager.find(User.class, id);
       entityManager.remove(deleteUser);

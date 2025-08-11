@@ -25,8 +25,15 @@
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.email}"></td>
         <td>
+            <form action="/PP_2_3_1_war_exploded/deleteUser" method="post">
+
+                <input type="hidden" name="id" th:value="${user.id}" />
+                <input type="submit" value="Delete">
+            </form>
+
             <button th:onclick="|window.location.href='@{getUser(id=${user.id})}'|">Update</button>
-            <button th:onclick="|window.location.href='@{getUserD(id=${user.id})}'|">Delete</button>
+
+
         </td>
 
     </tr>
