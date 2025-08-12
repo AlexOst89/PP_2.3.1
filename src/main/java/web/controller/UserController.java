@@ -16,6 +16,7 @@ public class UserController {
 
     @Autowired
     public UserController(UserService userService) {
+
         this.userService = userService;
     }
 
@@ -38,13 +39,13 @@ public class UserController {
     }
 
     @GetMapping("/getUser")
-    public String edit(@RequestParam(value = "id") int id, Model model) {
+    public String editUser(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("user", userService.getUser(id));
         return "addNewUser";
     }
 
     @PostMapping(value = "/update")
-    public String update(@ModelAttribute("user") User user, @RequestParam("id") int id) {
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam("id") int id) {
         userService.updateUser(id, user);
         return "redirect:/";
     }
